@@ -1,0 +1,66 @@
+package listaligada;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author icarocosta
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ListaLigadaED lista = new ListaLigadaED();
+        int opcao = 0;
+        while (opcao != 6) {
+            System.out.println("     Lista");
+            System.out.println("1 - Inserir dado");
+            System.out.println("2 - Alterar dado");
+            System.out.println("3 - Excluir dado");
+            System.out.println("4 - Pesquisar dado");
+            System.out.println("5 - Mostrar dados");
+            System.out.println("6 - Voltar");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite um inteiro para inserir na lista: ");
+                    int valor = scanner.nextInt();
+                    lista.inserir(valor);
+                    break;
+                case 2:
+                    System.out.print("Digite a posição do elemento a ser substituído: ");
+                    int posicaoSub = scanner.nextInt();
+                    System.out.print("Digite o novo valor: ");
+                    int novoValor = scanner.nextInt();
+                    lista.substituir(posicaoSub, novoValor);
+                    break;
+                case 3:
+                    System.out.print("Digite a posição do elemento a ser excluído");
+                    int posicaoExcl = scanner.nextInt();
+                    lista.excluir(posicaoExcl);
+                    break;
+
+                case 4:
+                    System.out.print("Digite um número para buscar na lista: ");
+                    int numBusca = scanner.nextInt();
+                    int posicaoNum = lista.buscar(numBusca);
+                    if (posicaoNum == -1) {
+                        System.out.println("O número não está na lista.");
+                    } else {
+                        System.out.println("O número está na posição " + posicaoNum + " da lista.");
+                    }
+                    break;
+                case 5:
+                    lista.mostrar();
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
